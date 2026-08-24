@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.Box
 import com.example.jetpack_crash_course.ui.theme.Jetpack_crash_courseTheme
 
 class MainActivity : ComponentActivity() {
@@ -85,19 +86,19 @@ fun HakunaMatataContent()
     {
         HakunaMatataImage()
         Spacer(Modifier.size(20.dp))
-        HakunaMatataText("Hoodland")
+        HakunaMatataText("Hoodland", modifier = Modifier.align(Alignment.BottomEnd))
     }
 }
 
-@Composable
-fun HakunaMatataText(name: String){
+@Composable 
+fun HakunaMatataText(name: String, modifier: Modifier = Modifier){
     Text(
         text = "$name Hakuna Matata",
         fontWeight = FontWeight.Bold,
         color = Color.Green,
         fontSize = 20.sp,
-//        modifier = Modifier.padding(20.dp)
-
+    //        modifier = Modifier.padding(20.dp)
+        modifier = modifier
     )
 }
 
