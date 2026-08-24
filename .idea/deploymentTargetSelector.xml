@@ -11,6 +11,9 @@
       <SelectionState runConfigName="PrevHakunaMatata">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="PrevHakunaMatataImage">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
