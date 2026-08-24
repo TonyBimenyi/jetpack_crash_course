@@ -15,17 +15,21 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+//import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.ui.Alignment
 import com.example.jetpack_crash_course.ui.theme.Jetpack_crash_courseTheme
 
 class MainActivity : ComponentActivity() {
@@ -54,17 +58,33 @@ class MainActivity : ComponentActivity() {
 //    }
 //}
 
+//@Composable
+//fun HakunaMatataContent()
+//{
+//    Row(modifier = Modifier
+//        .fillMaxSize(),
+//        horizontalArrangement = Arrangement.Center,
+//        verticalAlignment = Alignment.CenterVertically
+//
+//    )
+//    {
+//        HakunaMatataImage()
+//        Spacer(Modifier.size(20.dp))
+//        HakunaMatataText("Hoodland")
+//    }
+//}
+
 @Composable
 fun HakunaMatataContent()
 {
-    Column(modifier = Modifier
+    Box(modifier = Modifier
         .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        contentAlignment = Alignment.Center
 
     )
     {
         HakunaMatataImage()
+        Spacer(Modifier.size(20.dp))
         HakunaMatataText("Hoodland")
     }
 }
