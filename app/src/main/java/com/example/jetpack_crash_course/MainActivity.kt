@@ -6,12 +6,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -35,11 +39,34 @@ class MainActivity : ComponentActivity() {
 }
 
 
+//@Composable
+//fun HakunaMatataContent()
+//{
+//    Column(modifier = Modifier
+//        .fillMaxSize(),
+//        verticalArrangement = Arrangement.Center,
+//        horizontalAlignment = Alignment.CenterHorizontally
+//
+//    )
+//    {
+//        HakunaMatataImage()
+//        HakunaMatataText("Hoodland")
+//    }
+//}
+
 @Composable
 fun HakunaMatataContent()
 {
-    HakunaMatataImage()
-    HakunaMatataText("Hoodland")
+    Column(modifier = Modifier
+        .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+
+    )
+    {
+        HakunaMatataImage()
+        HakunaMatataText("Hoodland")
+    }
 }
 
 @Composable
@@ -49,7 +76,7 @@ fun HakunaMatataText(name: String){
         fontWeight = FontWeight.Bold,
         color = Color.Green,
         fontSize = 20.sp,
-        modifier = Modifier.padding(20.dp)
+//        modifier = Modifier.padding(20.dp)
 
     )
 }
@@ -61,8 +88,9 @@ fun HakunaMatataImage() {
         contentDescription = "Hakuna Matata Image",
         contentScale = ContentScale.Crop,
         modifier = Modifier
+            .size(56.dp)
             .clip(
-            RoundedCornerShape(30.dp)
+            RoundedCornerShape(20)
         )
 
     )
