@@ -43,7 +43,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.setValue
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Divider
 import com.example.jetpack_crash_course.ui.theme.Jetpack_crash_courseTheme
 
 class MainActivity : ComponentActivity() {
@@ -67,28 +70,54 @@ class MainActivity : ComponentActivity() {
 //                    HakunaMatataContent()
 //                }
 //            }
+            var task by remember {
+                mutableStateOf("")
+            }
+            val taskList = remember {
+                mutableStateListOf("")
+            }
+           Column {
+               TaskItem(task = task, onTaskChange = {task = it}, onAddTaskItem = {
+                   taskList.add(task)
+               },)
+               Divider()
+               TaskItemList(taskList)
+           }
 //        HakunaMatata("Hoodlab")
         }
     }
 }
 
 @Composable
-fun TaskItem(){
-    var task by remember {
-        mutableStateOf("")
-    }
+fun TaskItem(task: String, onTaskChange:(String)->Unit, onAddTaskItem:()->Unit){
+
     val context = LocalContext.current
+
     Column(){
-        TextField(value = task, onValueChange = {task = it})
-        Button(onClick = {
-            Toast.makeText(context, task, Toast.LENGTH_SHORT).show()
-        }) {
+        TextField(value = task, onValueChange = onTaskChange)
+        Button(
+            onClick = {
+//            Toast.makeText(context, task, Toast.LENGTH_SHORT).show()
+               onAddTaskItem()
+        },
+            enabled = task.isNotEmpty()
+        ) {
             Text("Add")
         }
     }
 
 
 
+}
+
+@Composable
+fun TaskItemList(items: List<String>){
+    LazyColumn {
+        items(items){ task ->
+            Text(task)
+            Spacer(Modifier.size(16.dp))
+        }
+    }
 }
 
 
@@ -210,7 +239,10 @@ fun PrevHakunaMatataContent(){
 @Preview(showBackground = true)
 @Composable
 fun PrevTaskItem(){
-    TaskItem()
+    TaskItem(
+        task = "",
+        {},{}
+    )
 }
 
 
