@@ -34,6 +34,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import com.example.jetpack_crash_course.ui.theme.Jetpack_crash_courseTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,6 +52,13 @@ class MainActivity : ComponentActivity() {
 //                    HakunaMatataContent()
 //                }
 //            }
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2)
+            ) {
+                items(10000){
+                    HakunaMatataContent()
+                }
+            }
 //        HakunaMatata("Hoodlab")
         }
     }
