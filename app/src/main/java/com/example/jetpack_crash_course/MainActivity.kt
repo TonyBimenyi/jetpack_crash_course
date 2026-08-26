@@ -2,6 +2,7 @@ package com.example.jetpack_crash_course
 
 import android.os.Bundle
 import android.view.RoundedCorner
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -36,6 +37,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.Button
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import com.example.jetpack_crash_course.ui.theme.Jetpack_crash_courseTheme
 
 class MainActivity : ComponentActivity() {
@@ -52,16 +60,35 @@ class MainActivity : ComponentActivity() {
 //                    HakunaMatataContent()
 //                }
 //            }
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2)
-            ) {
-                items(10000){
-                    HakunaMatataContent()
-                }
-            }
+//            LazyVerticalGrid(
+//                columns = GridCells.Fixed(2)
+//            ) {
+//                items(10000){
+//                    HakunaMatataContent()
+//                }
+//            }
 //        HakunaMatata("Hoodlab")
         }
     }
+}
+
+@Composable
+fun TaskItem(){
+    var task by remember {
+        mutableStateOf("")
+    }
+    val context = LocalContext.current
+    Column(){
+        TextField(value = task, onValueChange = {task = it})
+        Button(onClick = {
+            Toast.makeText(context, task, Toast.LENGTH_SHORT).show()
+        }) {
+            Text("Add")
+        }
+    }
+
+
+
 }
 
 
@@ -153,7 +180,8 @@ fun HakunaMatataImage() {
             .size(56.dp)
             .padding(vertical = 8.dp)
             .clip(
-            RoundedCornerShape(20))
+                RoundedCornerShape(20)
+            )
 
 
     )
@@ -177,6 +205,12 @@ fun PrevHakunaMatataImage(){
 @Composable
 fun PrevHakunaMatataContent(){
     HakunaMatataContent()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PrevTaskItem(){
+    TaskItem()
 }
 
 
