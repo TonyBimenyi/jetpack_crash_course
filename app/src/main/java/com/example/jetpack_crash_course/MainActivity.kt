@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,13 +32,18 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import com.example.jetpack_crash_course.ui.theme.Jetpack_crash_courseTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
+//            Column {
+//                for (i in 1..10){
+//                    HakunaMatataContent()
+//                }
+//            }
 //        HakunaMatata("Hoodlab")
         }
     }
@@ -78,15 +84,35 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun HakunaMatataContent()
 {
+//    Box(modifier = Modifier
+//        .fillMaxSize(),
+//        contentAlignment = Alignment.Center
+//
+//    )
+//    {
+//        HakunaMatataImage()
+//        Spacer(Modifier.size(20.dp))
+//        HakunaMatataText("Hoodland", modifier = Modifier.align(Alignment.BottomEnd))
+//    }
+
+
     Box(modifier = Modifier
-        .fillMaxSize(),
+        .fillMaxWidth()
+        .padding(16.dp)
+        .background(color = Color.Blue.copy(alpha = .2f)),
         contentAlignment = Alignment.Center
 
     )
     {
-        HakunaMatataImage()
-        Spacer(Modifier.size(20.dp))
-        HakunaMatataText("Hoodland", modifier = Modifier.align(Alignment.BottomEnd))
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ){
+            HakunaMatataImage()
+            Spacer(Modifier.size(20.dp))
+            HakunaMatataText("Hoodland")
+        }
     }
 }
 
@@ -110,9 +136,10 @@ fun HakunaMatataImage() {
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .size(56.dp)
+            .padding(vertical = 8.dp)
             .clip(
-            RoundedCornerShape(20)
-        )
+            RoundedCornerShape(20))
+
 
     )
 }
