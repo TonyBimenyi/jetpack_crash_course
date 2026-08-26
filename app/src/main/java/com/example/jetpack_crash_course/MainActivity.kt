@@ -33,6 +33,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import com.example.jetpack_crash_course.ui.theme.Jetpack_crash_courseTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,6 +42,11 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            Column {
 //                for (i in 1..10){
+//                    HakunaMatataContent()
+//                }
+//            }
+//            LazyColumn {
+//                items(10000){
 //                    HakunaMatataContent()
 //                }
 //            }
